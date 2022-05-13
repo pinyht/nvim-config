@@ -5,6 +5,9 @@
 "------------------------------
 " 基础配置
 "------------------------------
+if exists('g:vscode')
+    " VSCode extension
+else
 
 "保存配置立即生效
 "autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -162,7 +165,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-" For vsnip users.
+" " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 " For luasnip users.
@@ -174,6 +177,11 @@ Plug 'hrsh7th/vim-vsnip'
 " For snippy users.
 " Plug 'dcampos/nvim-snippy'
 " Plug 'dcampos/cmp-snippy'
+""coc插件
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
+Plug 'mfussenegger/nvim-jdtls'
 call plug#end()
 
 
@@ -223,10 +231,12 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"跳转到定义
+nnoremap <C-]> :Telescope lsp_definitions<cr>
 
 "------------------------------
 " nvim-lsp-installer插件插件配置
-"------------------------------
+""------------------------------
 lua require('config/nvim-lsp-installer')
 
 
@@ -236,3 +246,11 @@ lua require('config/nvim-lsp-installer')
 "------------------------------
 set completeopt=menu,menuone,noselect
 lua require('config/nvim-cmp')
+
+" nnoremap <Leader>gd <Plug>(coc-definition)
+
+
+lua require('lsp/java')
+
+    " ordinary neovim
+endif
