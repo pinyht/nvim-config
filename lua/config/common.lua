@@ -27,7 +27,7 @@ vim.o.shiftwidth=4
 -- 让 vim 把连续数量的空格视为一个制表符 
 vim.o.softtabstop=4
 -- 开启边界线
-vim.o.cc="20"
+vim.o.cc="120"
 -- 插入括号时，短暂地跳转到匹配的对应括号
 vim.cmd("set showmatch")
 -- 开启新行时使用智能自动缩进

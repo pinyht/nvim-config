@@ -7,19 +7,56 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     -- monokai主题插件
     use 'tanvirtin/monokai.nvim'
-    -- lsp安装插件
+    -- 加入中文文档
+    use 'yianwillis/vimcdoc'
+    -- 加入nvim-treesitter插件,增强代码高亮
     use {
-        "williamboman/nvim-lsp-installer",
-        "neovim/nvim-lspconfig",
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
     }
     -- nvim-tree插件,支持文件目录
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icon
-        }
+        },
     }
-    --use 'mfussenegger/nvim-jdtls'
+    -- bufferline插件,支持tab标签
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+    --lualine插件,美化状态栏
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+    -- toggleterm插件,支持悬浮终端
+    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+        require("toggleterm").setup {
+            hide_numbers = true,
+            shade_filetypes = {},
+            shade_terminals = true,
+            shading_factor = 2,
+            start_in_insert = true,
+            insert_mappings = true,
+            persist_size = true,
+            direction = "float",
+            close_on_exit = true,
+            shell = vim.o.shell,
+            float_opts = {
+                border = "double",        -- 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
+                winblend = 0,
+                highlights = {
+                    border = "Normal",
+                    background = "Normal",
+                },
+            },
+        }
+    end}
+    -- lsp安装插件,支持一键安装lsp服务器
+    use {
+        "williamboman/nvim-lsp-installer",
+        -- lsp自动配置插件
+        "neovim/nvim-lspconfig",
+    }
     --加入nvim-cmp插件,支持代码补全
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
