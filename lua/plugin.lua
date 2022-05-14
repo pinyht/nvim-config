@@ -29,28 +29,7 @@ return require('packer').startup(function()
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     -- toggleterm插件,支持悬浮终端
-    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-        require("toggleterm").setup {
-            hide_numbers = true,
-            shade_filetypes = {},
-            shade_terminals = true,
-            shading_factor = 2,
-            start_in_insert = true,
-            insert_mappings = true,
-            persist_size = true,
-            direction = "float",
-            close_on_exit = true,
-            shell = vim.o.shell,
-            float_opts = {
-                border = "double",        -- 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
-                winblend = 0,
-                highlights = {
-                    border = "Normal",
-                    background = "Normal",
-                },
-            },
-        }
-    end}
+    use {"akinsho/toggleterm.nvim", tag = 'v1.*'}
     -- lsp安装插件,支持一键安装lsp服务器
     use {
         "williamboman/nvim-lsp-installer",

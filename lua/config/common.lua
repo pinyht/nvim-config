@@ -51,6 +51,8 @@ set splitright
 ]])
 -- 自动关闭代码提示预览窗口
 vim.cmd("autocmd InsertLeave * if pumvisible() == 0|pclose|endif")
+-- 自动加载bash设置
+vim.o.shell="bash -l"
 
 
 
