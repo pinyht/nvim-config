@@ -4,4 +4,4 @@
 require('monokai').setup {
 }
 -- 设置主题
-vim.cmd("colorscheme monokai")
+vim.cmd("colorscheme monokai_soda")

@@ -30,6 +30,22 @@ return require('packer').startup(function()
     }
     -- toggleterm插件,支持悬浮终端
     use {"akinsho/toggleterm.nvim", tag = 'v1.*'}
+    -- nvim-lasplace插件,支持定位到上一次编辑过的位置
+    use 'ethanholz/nvim-lastplace'
+    -- which-key插件,查看自定义键位提示等
+    use 'folke/which-key.nvim'
+    -- Comment插件,支持一键注释
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+    -- telescope插件,支持全局搜索
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
     -- lsp安装插件,支持一键安装lsp服务器
     use {
         "williamboman/nvim-lsp-installer",
