@@ -10,7 +10,7 @@ require'toggleterm'.setup {
         end
     end,
     -- 打开终端快捷键
-    open_mapping = [[<c-t>]],
+    open_mapping = [[<leader>t]],
     -- 默认浮动展示
     direction = 'float',
     -- 浮动窗口配置

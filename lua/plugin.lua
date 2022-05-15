@@ -12,7 +12,10 @@ return require('packer').startup(function()
     -- 加入nvim-treesitter插件,增强代码高亮
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = ':TSUpdate',
+        requires = {
+            "p00f/nvim-ts-rainbow" -- 彩虹括号
+        },
     }
     -- nvim-tree插件,支持文件目录
     use {
@@ -34,6 +37,8 @@ return require('packer').startup(function()
     use 'ethanholz/nvim-lastplace'
     -- which-key插件,查看自定义键位提示等
     use 'folke/which-key.nvim'
+    -- auto-session插件,支持保存上次的会话状态,如打开的窗口等
+    use 'rmagatti/auto-session'
     -- Comment插件,支持一键注释
     use {
         'numToStr/Comment.nvim',
@@ -53,23 +58,41 @@ return require('packer').startup(function()
         "neovim/nvim-lspconfig",
     }
     --加入nvim-cmp插件,支持代码补全
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    -- " For vsnip users.
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
-    -- For luasnip users.
-    -- Plug 'L3MON4D3/LuaSnip'
-    -- Plug 'saadparwaiz1/cmp_luasnip'
-    -- For ultisnips users.
-    -- Plug 'SirVer/ultisnips'
-    -- Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-    -- For snippy users.
-    -- Plug 'dcampos/nvim-snippy'
-    -- Plug 'dcampos/cmp-snippy'
+    use {
+        "hrsh7th/nvim-cmp",  -- 代码补全核心插件，下面都是增强补全的体验插件
+        requires = {
+            {"onsails/lspkind-nvim"}, -- 为补全添加类似 vscode 的图标
+            {"hrsh7th/vim-vsnip"}, -- vsnip 引擎，用于获得代码片段支持
+            {"hrsh7th/cmp-vsnip"}, -- 适用于 vsnip 的代码片段源
+            {"hrsh7th/cmp-nvim-lsp"}, -- 替换内置 omnifunc，获得更多补全
+            {"hrsh7th/cmp-path"}, -- 路径补全
+            {"hrsh7th/cmp-buffer"}, -- 缓冲区补全
+            {"hrsh7th/cmp-cmdline"}, -- 命令补全
+            {"f3fora/cmp-spell"}, -- 拼写建议
+            {"rafamadriz/friendly-snippets"}, -- 提供多种语言的代码片段
+            {"lukas-reineke/cmp-under-comparator"}, -- 让补全结果的排序更加智能
+        },
+    }
+    -- -- 代码调试基础插件
+    -- use {
+    --     "mfussenegger/nvim-dap",
+    -- }
+    --
+    -- -- 为代码调试提供内联文本
+    -- use {
+    --     "theHamsta/nvim-dap-virtual-text",
+    --     requires = {
+    --         "mfussenegger/nvim-dap"
+    --     },
+    -- }
+    --
+    -- -- 为代码调试提供 UI 界面
+    -- use {
+    --     "rcarriga/nvim-dap-ui",
+    --     requires = {
+    --         "mfussenegger/nvim-dap"
+    --     },
+    -- }
 
 end)
 
